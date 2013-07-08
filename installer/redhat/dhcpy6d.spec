@@ -73,10 +73,7 @@ install -p -D -m 644 etc/logrotate.d/%{name} %{buildroot}%{_sysconfdir}/logrotat
 
 %post
 file=/var/log/%{name}.log
-if [ ! -f ${file} ]
-    then
-    /bin/touch ${file}
-fi
+/bin/touch ${file}
 /bin/chown %{dhcpy6d_uid}:%{dhcpy6d_gid} ${file}
 /bin/chmod 0640 ${file}
 
