@@ -29,7 +29,7 @@ elif [ -f /etc/redhat-release ]
 	then
 		echo "Building .rpm package"
 
-                TOPDIR=$HOME/rpmbuild
+                TOPDIR=$HOME/dhcpy6d.$$
                 SPEC=installer/redhat/dhcpy6d.spec
 
 		# create source folder for rpmbuild
@@ -54,6 +54,8 @@ elif [ -f /etc/redhat-release ]
 		# get rpm file
 		cp -f `find $TOPDIR/RPMS -name "$FILE-1.*noarch.rpm"` .
 
+                # clean
+                rm -rf $TOPDIR
 else
 	echo "Package creation is only supported on Debian and RedHat derivatives."
 fi
